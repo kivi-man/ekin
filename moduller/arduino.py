@@ -185,6 +185,11 @@ MODUL = Modul(
         Islev("eeprom_yaz(değer'i, adres'e)", py=lambda d, a: _EEPROM.__setitem__(a, d & 255),
               cpp="EEPROM.update({1}, (uint8_t)({0}))", gerekir=["<EEPROM.h>"],
               aciklama="Kalıcı belleğe bir bayt yazar."),
+        # --- C++ kütüphaneleriyle uyum
+        Islev("bayt(değer)", py=lambda d: int(d) % 256, cpp="((uint8_t)({0}))", donus="tam",
+              aciklama="Değeri 0-255 aralığında bir bayta (uint8_t) çevirir. Birden çok sürümü olan "
+                       "C++ işlevlerine ('ambiguous' hatası) tam sayı verirken kullanılır.",
+              ornek="Wire.beginTransmission(bayt(adres))"),
         # --- benzetim yardımcısı
         Islev("sim_ayarla(pin'e, değer'i)", py=_sim_ayarla, cpp="((void)0)",
               aciklama="(Yalnız yorumlayıcı) Benzetimde pinden okunacak değeri belirler; kartta etkisizdir.",

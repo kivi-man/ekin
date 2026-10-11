@@ -2,7 +2,7 @@
 
 Bu dosya `ekin modüller --md` ile modül tanımlarından otomatik üretilir.
 
-Toplam **194** komut.
+Toplam **195** komut.
 
 Sütunlar: **Komut** (imzadaki ekler argümanın rolünü gösterir), **Döner**, **Açıklama**. Hedef: hangi sürümlerde kullanılabildiği (py = yorumlayıcı).
 
@@ -44,6 +44,7 @@ Hedef: arduino, py
 | `servo_yaz(pin'e, açı'yı)` | — | Servoyu açıya (0-180) getirir.<br>örnek: `90'ı 9'a servo_yaz` |
 | `eeprom_oku(adres'i)` | tam | Kalıcı bellekten bir bayt okur. |
 | `eeprom_yaz(değer'i, adres'e)` | — | Kalıcı belleğe bir bayt yazar. |
+| `bayt(değer)` | tam | Değeri 0-255 aralığında bir bayta (uint8_t) çevirir. Birden çok sürümü olan C++ işlevlerine ('ambiguous' hatası) tam sayı verirken kullanılır.<br>örnek: `Wire.beginTransmission(bayt(adres))` |
 | `sim_ayarla(pin'e, değer'i)` | — | (Yalnız yorumlayıcı) Benzetimde pinden okunacak değeri belirler; kartta etkisizdir.<br>örnek: `sim_ayarla(A0, 800)` |
 
 Sabitler: `YÜKSEK`, `DÜŞÜK`, `GİRİŞ`, `ÇIKIŞ`, `GİRİŞ_DİRENÇLİ`, `DAHİLİ_LED`, `YÜKSELEN`, `DÜŞEN`, `DEĞİŞEN`, `LSB_ÖNCE`, `MSB_ÖNCE`, `A0`, `A1`, `A2`, `A3`, `A4`, `A5`, `A6`, `A7`

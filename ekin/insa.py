@@ -195,6 +195,7 @@ def pc_derle(cpp_yolu, cikti, moduller, optimizasyon="-O2", ayrintili=False):
                       "           ya da RAYLIB_YOL ortam değişkeniyle başka bir klasör gösterin\n"
                       "  macOS:   brew install raylib\n"
                       "  Linux:   sudo apt install libraylib-dev  (ya da kaynaktan derleyin)")
+        ileti += belirsiz_cagri_ipucu(ileti)
         raise EkinHatasi("C++ derlemesi başarısız oldu:\n" + ileti)
     return cikti
 
@@ -249,6 +250,17 @@ def arduino_taslagi(cpp_kodu, klasor, ad, moduller=()):
     return taslak
 
 
+def belirsiz_cagri_ipucu(cikti):
+    """C++ kütüphanesinde aynı adlı birden çok işlev varsa (ör. f(uint8_t) ve f(int))
+    Ekin'in tam sayısının (long) hangisine gideceği belirsizdir; çözüm yolunu anlatır."""
+    if "ambiguous" not in cikti or "ekin::tam" not in cikti:
+        return ""
+    return ("\n\nBu C++ işlevinin birden çok sürümü var ve Ekin'in tam sayısının hangisine gideceği "
+            "belli değil.\nArgümanı uygun tipe çevirin:\n"
+            "  bayt(x)                   -> uint8_t   ör. Wire.beginTransmission(bayt(adres))\n"
+            "  başka bir tip için tanım:  dış işlev kısa(x) -> tam = \"(int)({0})\"")
+
+
 def arduino_derle(taslak, kart="arduino:avr:uno", port=None, yukle=False):
     cli = arduino_cli_bul()
     if cli is None:
@@ -274,6 +286,7 @@ def arduino_derle(taslak, kart="arduino:avr:uno", port=None, yukle=False):
             cikti += (f"\n\n'{ad}' kütüphanesi kurulu değil. Kurmak için:\n"
                       f"  arduino-cli lib install \"{ad}\"\n"
                       f"  (ya da Arduino IDE > Kütüphane Yöneticisi'nde '{ad}' aratın)")
+        cikti += belirsiz_cagri_ipucu(cikti)
         raise EkinHatasi("Arduino derlemesi başarısız oldu:\n" + cikti)
     return cikti
 

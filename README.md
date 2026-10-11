@@ -380,7 +380,7 @@ Komutlar modüllerde toplanır. Beşi kendiliğinden yüklenir; diğerleri `kull
 | `dosya` | 6 | `kullan dosya` | PC | dosya okuma ve yazma |
 | `sistem` | 4 | `kullan sistem` | PC | komut çalıştırma, ortam değişkeni, argümanlar |
 
-**Toplam 194 komut.** Tam liste için [KOMUTLAR.md](KOMUTLAR.md) dosyasına bakın ya da terminalde:
+**Toplam 195 komut.** Tam liste için [KOMUTLAR.md](KOMUTLAR.md) dosyasına bakın ya da terminalde:
 
 ```bash
 ekin modüller            # özet
@@ -442,13 +442,25 @@ Ekin, `derleme/<ad>/` klasöründe bir Arduino taslağı (sketch) oluşturur. Bu
 
 ### Arduino'nun tüm özellikleri
 
-1. **Türkçe komutlar:** `yak, söndür, tersle, dijital_yaz/oku, analog_yaz/oku, pin_modu, çıkış_yap, giriş_yap, dirençli_giriş_yap, basılı_mı, ton, ton_durdur, darbe_oku, kaydırarak_gönder/al, kesme_bağla/ayır, kesmeleri_kapat/aç, seri_başlat, seri_var, seri_oku, seri_satır_oku, seri_bayt_yaz, servo_bağla, servo_yaz, eeprom_oku/yaz, analog_referans` ve sabitler `YÜKSEK, DÜŞÜK, GİRİŞ, ÇIKIŞ, GİRİŞ_DİRENÇLİ, DAHİLİ_LED, A0…A7, YÜKSELEN, DÜŞEN, DEĞİŞEN`.
+1. **Türkçe komutlar:** `yak, söndür, tersle, dijital_yaz/oku, analog_yaz/oku, pin_modu, çıkış_yap, giriş_yap, dirençli_giriş_yap, basılı_mı, ton, ton_durdur, darbe_oku, kaydırarak_gönder/al, kesme_bağla/ayır, kesmeleri_kapat/aç, seri_başlat, seri_var, seri_oku, seri_satır_oku, seri_bayt_yaz, servo_bağla, servo_yaz, eeprom_oku/yaz, analog_referans, bayt` ve sabitler `YÜKSEK, DÜŞÜK, GİRİŞ, ÇIKIŞ, GİRİŞ_DİRENÇLİ, DAHİLİ_LED, A0…A7, YÜKSELEN, DÜŞEN, DEĞİŞEN`.
 2. **Arduino/C++ adları doğrudan:** Ekin'de tanımlı olmayan her ad C++'a olduğu gibi aktarılır: `digitalWrite(13, HIGH)`, `Serial.println(x)`, `millis()`.
 3. **Her kütüphane:** `kullan <Kütüphane.h>` yazın. C++ nesneleri kurucu argümanlarıyla oluşturulur: `lcd = LiquidCrystal(12, 11, 5, 4, 3, 2)`.
 4. **Türkçe ad verme:** `dış işlev ekrana_yaz(ekran, metin'i) = "{0}.print({1})"`
 5. **Ham C++:** `cpp:` bloğunun içi olduğu gibi aktarılır.
 
 Ayrıntılı örnek: `ornekler/arduino/05_cpp_kutuphanesi.ekin`.
+
+Kütüphane fonksiyonlarına geçen sayılar `long` tipindedir, çünkü Ekin'in `tam` tipi Arduino'da `long` olarak derlenir. Bir C++ işlevinin aynı adla birden çok sürümü varsa derleyici `ambiguous` (belirsiz) hatası verir. Örneğin `Wire.beginTransmission(uint8_t)` ile `Wire.beginTransmission(int)` böyledir. Bu durumda değeri `bayt(...)` ile çevirin:
+
+```
+kullan <Wire.h>
+için adres 1'den 126'ya:
+    Wire.beginTransmission(bayt(adres))
+    sonuç = Wire.endTransmission()
+    sonuç == 0 ise: yaz "Cihaz bulundu:", adres
+```
+
+Başka bir tip gerekirse kendiniz tanımlayabilirsiniz: `dış işlev kısa(x) -> tam = "(int)({0})"`. Ekin bu hatayı gördüğünde aynı çözümü kendisi de önerir.
 
 **Notlar:**
 
@@ -712,7 +724,7 @@ calisma_zamani/                 C++ çalışma zamanı (ekin.hpp, ekin_grafik.hp
                                 ekin_opengl.hpp, ekin_dosya.hpp, ekin_servo.hpp)
 ornekler/                       örnek programlar
 testler/                        test paketi
-KOMUTLAR.md                     194 komutun tam listesi
+KOMUTLAR.md                     195 komutun tam listesi
 ```
 
 Testleri çalıştırmak için:
