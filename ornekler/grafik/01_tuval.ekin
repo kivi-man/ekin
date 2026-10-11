@@ -1,0 +1,28 @@
+# Tuvale sabit bir resim çizer (her_karede bloğu yok: çizim bir kez yapılır)
+
+kullan grafik
+
+pencere_aç 640, 420, "Ekin - Tuval"
+arkaplan GÖK_MAVİSİ
+
+# güneş
+daire 540, 80, 50, SARI
+
+# çimen ve ev
+dikdörtgen 0, 320, 640, 100, KOYU_YEŞİL
+dikdörtgen 180, 200, 200, 140, renk(200, 120, 80)
+üçgen 160, 200, 400, 200, 280, 110, BORDO
+dikdörtgen 255, 270, 50, 70, KAHVERENGİ
+dikdörtgen 200, 225, 40, 35, BEYAZ
+dikdörtgen 320, 225, 40, 35, BEYAZ
+
+# ağaçlar: bir işlevle
+işlev ağaç(x, boy):
+    dikdörtgen x - 8, 330 - boy, 16, boy, KAHVERENGİ
+    daire x, 330 - boy, boy / 2, YEŞİL
+
+için i 0'dan 2'ye:
+    ağaç(470 + i * 55, 60 + i * 15)
+
+# Türkçe harflerle yazı
+yazı "Güzel bir gün: çiçekler açmış, kuşlar şakıyor!", 20, 380, 22, BEYAZ

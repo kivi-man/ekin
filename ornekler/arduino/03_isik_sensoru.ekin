@@ -1,0 +1,30 @@
+# Işık sensörü (LDR, A0) okunur; LED parlaklığı (9. pin, PWM) ortama göre ayarlanır.
+# Ortalamayı bulmak için son 10 ölçüm bir listede tutulur.
+#
+# Benzetimde sensör değeri sim_ayarla ile verilir (kartta etkisizdir).
+
+kullan arduino
+
+SENSÖR = A0
+LED = 9
+ölçümler: liste[tam] = []
+
+işlev parlaklık_hesapla(ışık):
+    # karanlıkta parlak, aydınlıkta sönük
+    dön ölçekle(ışık, 0, 1023, 255, 0)
+
+kurulum:
+    seri_başlat 115200
+    LED'i çıkış_yap
+    sim_ayarla(SENSÖR, 300)
+
+döngü:
+    değer = SENSÖR'ü analog_oku
+    değer'i ölçümler'e ekle
+    uzunluk(ölçümler) > 10 ise:
+        ölçümler'den 0'ı sil
+    ort = ölçümler'in ortalaması
+    p = parlaklık_hesapla(tam(ort))
+    p'yi LED'e analog_yaz
+    yaz "ışık:", değer, "ortalama:", ort, "parlaklık:", p
+    250 bekle

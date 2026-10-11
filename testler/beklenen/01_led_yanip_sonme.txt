@@ -1,0 +1,6 @@
+  [arduino] pin 13 -> ÇIKIŞ
+LED hazır
+  [arduino] pin 13 = YÜKSEK
+  [arduino] pin 13 = DÜŞÜK
+  [arduino] pin 13 = YÜKSEK
+  [arduino] pin 13 = DÜŞÜK

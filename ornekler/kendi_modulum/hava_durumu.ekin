@@ -1,0 +1,16 @@
+# Kendi modülünüzü yazmak: moduller/sicaklik.py (+ sicaklik.hpp)
+#
+#   ekin çalıştır ornekler/kendi_modulum/hava_durumu.ekin
+#   ekin derle    ornekler/kendi_modulum/hava_durumu.ekin --çalıştır
+
+kullan sıcaklık
+
+şehirler = ["Ankara", "İzmir", "Erzurum"]
+sıcaklıklar = [12.5, 21.0, -4.0]
+
+için i 0'dan uzunluk(şehirler) - 1'e:
+    c = sıcaklıklar[i]
+    f = c'yi fahrenhayta
+    yaz "{şehirler[i]}: {c} °C = {yuvarla(f, 1)} °F, hissedilen {yuvarla(hissedilen(c, 16), 1)} °C"
+
+yaz "Mutlak sıfır:", MUTLAK_SIFIR, "°C =", yuvarla(fahrenhayta(MUTLAK_SIFIR), 2), "°F"

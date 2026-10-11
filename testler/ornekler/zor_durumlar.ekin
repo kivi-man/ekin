@@ -1,0 +1,174 @@
+# Yorumlayıcı ve derleyicinin aynı sonucu verdiğini denetleyen uç durumlar.
+
+# --- sayılar
+yaz -7 % 3, 7 % -3, -7 // 2, 7 // 2, 7 / 2, 2 ** 10, 2.0 ** 0.5
+yaz 7.5 % 2, -7.5 // 2, 1 / 3, 10 / 5, 1e20, 0.1 + 0.2
+yaz yuvarla(2.5), yuvarla(-2.5), yuvarla(3.14159, 2), taban(-1.5), tavan(1.2)
+yaz mutlak(-5), mutlak(-2.5), işaret(-3), sınırla(15, 0, 10), ölçekle(512, 0, 1023, 0, 255)
+yaz en_büyük(3, 9, 4), en_küçük(2.5, 1, 7), karekök(2), faktöriyel(10), ebob(48, 36), ekok(4, 6)
+yaz asal_mı(97), asal_mı(91), çift_mi(10), tek_mi(7)
+x = 10
+x += 5
+x -= 3
+x *= 2
+yaz x
+y = 7.0
+y /= 2
+yaz y
+z = 17
+z //= 5
+z %= 2
+yaz z
+k = 3
+k **= 3
+yaz k
+
+# --- metinler
+m = "  Çok Güzel Bir Gün  "
+yaz "[" + kırp(m) + "]"
+yaz büyüt("ığdır ilçesi"), küçült("İSTANBUL IŞIK")
+yaz uzunluk("çğıöşü"), harf("çğıöşü", 2), ters("kayık")
+yaz parçala("a,b,,c", ","), parçala("  bir   iki  üç "), birleştir(["x", "y", "z"], "-")
+yaz değiştir("ali ata bak", "a", "e"), başlar("merhaba", "mer"), biter("merhaba", "aba")
+yaz alt_metin("İstanbul", 2, 3), alt_metin("İstanbul", 5), sayı_mı("3.5"), sayı_mı("3a")
+yaz karakter_kodu("ş"), koddan_karakter(287), çoğalt("ab", 3), "-" * 5
+yaz harfler("ağaç"), satırlar("a\nb\n\nc\n"), say("ananas", "na"), bul("na", "ananas")
+yaz tam("42"), ondalık("3,25"), metin(12) + metin(3.5), mantık("evet"), tam(3.99)
+yaz "değer: {x * 2}, liste: {[1, 2]}, mantık: {x > 3}"
+yaz "süslü {{parantez}}"
+
+# --- listeler
+l = [3, 1, 4, 1, 5, 9, 2, 6]
+yaz sırala(l), ters_sırala(l), ters(l)
+yaz topla(l), çarp([1, 2, 3, 4]), ortalama(l), say(l, 1), bul(1, l), içinde(9, l), içinde(7, l)
+yaz dilim(l, 2, 4), ilk(l), son(l), uzunluk(l), boş_mu(l), boş_mu([])
+yaz süz(l, n -> n > 3), eşle(l, n -> n * 10), hepsi(l, n -> n > 0), biri(l, n -> n > 8)
+yaz eşle(["a", "bb"], s -> uzunluk(s)), eşle([1, 4, 9], karekök)
+yaz aralık(1, 5), aralık(10, 0, -3), aralık(5, 1), doldur(3, "x"), [1, 2] + [3]
+çıkan = sil(l, 0)
+yaz çıkan, l
+araya_ekle(l, 1, 100)
+yaz l
+çıkar(1, l)
+yaz l
+l[0] = 77
+yaz l, l[0] + l[1]
+temizle(l)
+yaz l, uzunluk(l)
+matris = [[1, 2], [3, 4]]
+yaz matris, matris[1][0]
+boşlar: liste[ondalık] = []
+2.5'i boşlar'a ekle
+yaz boşlar
+
+# --- denetim akışı
+toplam = 0
+için i 1'den 100'e:
+    i % 2 == 0 ise: devam
+    i > 10 ise: kır
+    toplam += i
+yaz "tekler toplamı:", toplam
+a = 5
+b = 1
+için j a'dan b'ye -1 adımla:
+    yaz_satırsız j, ""
+yaz ""
+için j 0'dan 1'e 0.25 adımla:
+    yaz_satırsız j, ""
+yaz ""
+n = 0
+sürekli:
+    n += 1
+    n >= 4 ise: kır
+yaz "n:", n
+sayaç = 0
+2 kez tekrarla:
+    3 kez tekrarla:
+        sayaç += 1
+yaz "sayaç:", sayaç
+
+# --- işlevler
+işlev fib(n):
+    n < 2 ise: dön n
+    dön fib(n - 1) + fib(n - 2)
+yaz eşle(aralık(0, 10), fib)
+
+işlev en_uzun(kelimeler):
+    en = ""
+    her w kelimeler'de:
+        uzunluk(w) > uzunluk(en) ise: en = w
+    dön en
+yaz en_uzun(["kedi", "zürafa", "at"])
+
+işlev selam(ad'ı, adet'le = 1):
+    sonuç = ""
+    tekrarla adet kez:
+        sonuç += "selam " + ad + "! "
+    dön kırp(sonuç)
+yaz selam("Ece"), selam("Can", 2)
+yaz "Deniz"'i 3'le selam
+
+işlev hiçbir_şey():
+    yaz "yan etki"
+hiçbir_şey
+
+# --- yapılar
+yapı Vektör:
+    x = 0.0
+    y = 0.0
+
+    işlev uzunluk_al():
+        dön karekök(x * x + y * y)
+
+    işlev ölçekle_(k):
+        x = x * k
+        y = y * k
+
+    işlev topla_(öbür):
+        dön Vektör(x + öbür.x, y + öbür.y)
+
+yapı Parçacık:
+    konum = Vektör()
+    ad = "p"
+    hız = 1
+
+v = Vektör(3.0, 4.0)
+yaz v, v.uzunluk_al(), v'nin uzunluk_alı
+v.ölçekle_(2)
+yaz v
+w = v.topla_(Vektör(1.0, 1.0))
+yaz w, w == Vektör(7.0, 9.0), w != v
+p = Parçacık(Vektör(1.0, 2.0), "toz")
+p.konum.x = 10.0
+p.hız += 4
+yaz p
+parçacıklar = [Parçacık(), p]
+yaz uzunluk(parçacıklar), parçacıklar[1].ad
+
+sabit KAT = 3
+yaz KAT * 2, PI > 3, TAU > 6, E < 3
+
+# --- değer semantiği: listeler ve yapılar atamada kopyalanır (C++ ile aynı)
+l1 = [1, 2]
+l2 = l1
+3'ü l2'ye ekle
+yaz l1, l2
+işlev eklemeyi_dene(liste):
+    99'u liste'ye ekle
+    dön uzunluk(liste)
+yaz eklemeyi_dene(l1), l1
+v1 = Vektör(1.0, 1.0)
+v2 = v1
+v2.x = 5.0
+yaz v1, v2
+vl = [Vektör(), Vektör()]
+vl[0].x = 3.0
+her q vl'de: q.x = 100.0
+yaz vl
+için i 0'dan uzunluk(vl) - 1'e:
+    vl[i].ölçekle_(2)
+yaz vl
+boş_liste: liste[tam] = []
+için i 0'dan uzunluk(boş_liste) - 1'e:
+    yaz "buraya girilmemeli"
+yaz "boş liste döngüsü atlandı"

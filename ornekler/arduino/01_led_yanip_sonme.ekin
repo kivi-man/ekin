@@ -1,0 +1,18 @@
+# Arduino'nun "Blink" örneği - Ekin ile
+#
+# PC'de benzetim:   ekin çalıştır ornekler/arduino/01_led_yanip_sonme.ekin --tur 3
+# Karta yükleme:    ekin arduino ornekler/arduino/01_led_yanip_sonme.ekin --port COM3 --yükle
+
+kullan arduino
+
+led = DAHİLİ_LED
+
+kurulum:
+    led'i çıkış_yap
+    yaz "LED hazır"
+
+döngü:
+    led'i yak
+    500 bekle
+    led'i söndür
+    500 bekle

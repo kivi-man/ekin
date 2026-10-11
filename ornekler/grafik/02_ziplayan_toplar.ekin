@@ -1,0 +1,47 @@
+# Zıplayan toplar: yapı, liste ve her_karede döngüsü
+# Fareyle tıklayarak yeni top ekleyin; BOŞLUK tuşu tüm topları siler.
+
+kullan grafik
+
+GEN = 800
+YÜK = 600
+
+yapı Top:
+    x = 0.0
+    y = 0.0
+    hx = 0.0
+    hy = 0.0
+    r = 10.0
+    renk = BEYAZ
+
+    işlev ilerle():
+        x += hx
+        y += hy
+        hy += 0.3                       # yerçekimi
+        x - r < 0 veya x + r > GEN ise: hx = -hx
+        y + r > YÜK ise:
+            y = YÜK - r
+            hy = -hy * 0.9              # her zıplamada biraz enerji kaybı
+
+    işlev çiz():
+        daire x, y, r, renk
+
+toplar: liste[Top] = []
+
+işlev top_ekle(x, y):
+    t = Top(x, y, ondalık(rastgele(-5, 5)), ondalık(rastgele(-8, -2)), ondalık(rastgele(8, 25)), rastgele_renk())
+    t'yi toplar'a ekle
+
+5 kez tekrarla:
+    top_ekle(ondalık(rastgele(100, 700)), 100.0)
+
+pencere_aç GEN, YÜK, "Zıplayan Toplar"
+
+her_karede:
+    arkaplan LACİVERT
+    fare_tıklandı() ise: top_ekle(ondalık(fare_x()), ondalık(fare_y()))
+    tuşa_basıldı(TUŞ_BOŞLUK) ise: temizle(toplar)
+    için i 0'dan uzunluk(toplar) - 1'e:
+        toplar[i].ilerle()
+        toplar[i].çiz()
+    yazı "Top sayısı: {uzunluk(toplar)}   (tıkla: ekle, boşluk: temizle)", 10, 10, 20, BEYAZ

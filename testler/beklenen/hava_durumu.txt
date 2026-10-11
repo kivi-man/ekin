@@ -1,0 +1,4 @@
+Ankara: 12.5 °C = 54.5 °F, hissedilen 9.7 °C
+İzmir: 21 °C = 69.8 °F, hissedilen 18.2 °C
+Erzurum: -4 °C = 24.8 °F, hissedilen -6.8 °C
+Mutlak sıfır: -273.15 °C = -459.67 °F

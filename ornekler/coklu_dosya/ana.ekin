@@ -1,0 +1,6 @@
+# Programı birden çok dosyaya bölmek
+kullan "araclar.ekin"
+
+yaz "Zeynep"'i selamla
+notlar = [70, 85, 90, 55]
+yaz "Ortanca:", notlar'ın ortancası

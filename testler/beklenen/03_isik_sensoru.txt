@@ -1,0 +1,8 @@
+  [arduino] seri port 115200 baud
+  [arduino] pin 9 -> ÇIKIŞ
+  [arduino] pin 9 PWM = 181
+ışık: 300 ortalama: 300 parlaklık: 181
+  [arduino] pin 9 PWM = 181
+ışık: 300 ortalama: 300 parlaklık: 181
+  [arduino] pin 9 PWM = 181
+ışık: 300 ortalama: 300 parlaklık: 181

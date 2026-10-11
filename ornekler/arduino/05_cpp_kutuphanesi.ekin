@@ -1,0 +1,38 @@
+# Herhangi bir Arduino/C++ kütüphanesini kullanmak
+#
+# 1) kullan <Kütüphane.h>  ile başlığı ekleyin
+# 2) C++ adlarını olduğu gibi yazın (lcd.print, Serial.println ...)
+# 3) İsterseniz 'dış işlev' ile Türkçe bir ad verin
+#
+# Örnek: 16x2 LCD ekran (LiquidCrystal kütüphanesi Arduino ile birlikte gelir)
+# Bu dosya yalnızca derlenmiş sürümde çalışır (ekin arduino ...).
+
+kullan arduino
+kullan <LiquidCrystal.h>
+
+# Türkçe adlar (C++ şablonu: {0} birinci argüman, {1} ikinci ...)
+dış işlev ekrana_yaz(ekran, metin'i) = "{0}.print({1})"
+dış işlev imleç(ekran, sütun, satır'a) = "{0}.setCursor({1}, {2})"
+dış sabit EKRAN_GENİŞLİĞİ -> tam = "16"
+
+# C++ sınıfı: kurucu argümanlarıyla doğrudan oluşturulur
+lcd = LiquidCrystal(12, 11, 5, 4, 3, 2)
+sayaç = 0
+
+kurulum:
+    seri_başlat 9600
+    lcd.begin(EKRAN_GENİŞLİĞİ, 2)
+    ekrana_yaz(lcd, "Merhaba Ekin!")
+
+döngü:
+    imleç(lcd, 0, 1)
+    ekrana_yaz(lcd, "Sayac: {sayaç}")
+    sayaç += 1
+    Serial.println(sayaç)      # C++ adı olduğu gibi
+    1000 bekle
+
+# İstenirse ham C++ da yazılabilir:
+işlev ham_örnek():
+    cpp:
+        // Bu blok olduğu gibi C++'a aktarılır
+        digitalWrite(LED_BUILTIN, !digitalRead(LED_BUILTIN));

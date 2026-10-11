@@ -1,0 +1,23 @@
+["elma", "armut", "kiraz", "muz"]
+5
+["elma", "kiraz", "muz", "üzüm"]
+toplam: 108
+en büyüğü: 42
+ortalaması: 18
+ilk ve son: 4 42
+27
+7
+kutu: salon -> mutfak
+masa: salon -> mutfak
+2.5
+2.5
+3
+1. tur
+2. tur
+3. tur
+ELMA
+KİRAZ
+MUZ
+ÜZÜM
+8
+13

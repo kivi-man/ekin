@@ -1,0 +1,7 @@
+  [arduino] seri port 9600 baud
+  [arduino] pin 2 -> GİRİŞ_DİRENÇLİ
+  [arduino] pin 13 -> ÇIKIŞ
+  [arduino] pin 2 kesmesi -> düğmeye_basıldı
+Düğmeye basın...
+Basış sayısı: 0
+Basış sayısı: 0

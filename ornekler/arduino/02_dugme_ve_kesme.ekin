@@ -1,0 +1,28 @@
+# Düğmeye basıldıkça LED'i değiştirir; basış sayısını seri porta yazar.
+# Bağlantı: düğme 2. pin ile GND arasında (dahili direnç kullanılır), LED 13. pinde.
+
+kullan arduino
+
+DÜĞME = 2
+LED = 13
+basış = 0
+son_zaman = 0
+
+işlev düğmeye_basıldı():
+    # titreşim (debounce) önleme: 200 ms içinde ikinci basışı sayma
+    şimdi = milisaniye()
+    şimdi - son_zaman > 200 ise:
+        basış += 1
+        LED'i tersle
+        son_zaman = şimdi
+
+kurulum:
+    seri_başlat 9600
+    DÜĞME'yi dirençli_giriş_yap
+    LED'i çıkış_yap
+    kesme_bağla(DÜĞME, düğmeye_basıldı, DÜŞEN)
+    yaz "Düğmeye basın..."
+
+döngü:
+    yaz "Basış sayısı: {basış}"
+    1000 bekle

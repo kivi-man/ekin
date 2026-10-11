@@ -1,0 +1,65 @@
+# Ekin'in Türkçe ek yapısı
+#
+# Hal ekleri, bir değerin cümledeki görevini söyler. Bu yüzden
+# argümanların sırası serbesttir ve eylem (işlev) cümlenin sonuna gelir.
+#
+#   -ı/-i/-u/-ü   neyi?     (belirtme)
+#   -a/-e         neye?     (yönelme)
+#   -da/-de       nerede?   (bulunma)
+#   -dan/-den     nereden?  (ayrılma)
+#   -ın/-in       kimin?    (ilgi)       liste'nin uzunluğu
+#   -la/-le       neyle?    (vasıta)
+
+meyveler = ["elma", "armut"]
+
+# Kesme işaretiyle ek: her sözcükte çalışır
+"kiraz"'ı meyveler'e ekle
+meyveler'e "muz"'u ekle            # sıra değişse de anlam aynı
+yaz meyveler
+
+# Kesme işaretsiz yazım: tanımlı adlarda kök kendiliğinden bulunur
+"üzüm"'ü meyvelere ekle
+yaz meyvelerin uzunluğu            # meyveler'in uzunluğu
+"armut"'u meyvelerden çıkar
+yaz meyveler
+
+# İlgi + iyelik: "x'in y'si"  ->  y(x)
+sayılar = [4, 8, 15, 16, 23, 42]
+yaz "toplam:", sayılar'ın toplamı
+yaz "en büyüğü:", sayılar'ın en_büyüğü
+yaz "ortalaması:", sayılar'ın ortalaması
+yaz "ilk ve son:", sayılar'ın ilki, sayılar'ın sonu
+
+# Ünsüz yumuşaması da tanınır: renk -> rengi, kitap -> kitabı, sayaç -> sayacı
+kitap = "Saatleri Ayarlama Enstitüsü"
+yaz kitabın uzunluğu
+renk_adı = "turkuaz"
+yaz renk_adının uzunluğu
+
+# Kendi işlevlerinizde de ekleri tanımlayabilirsiniz
+işlev taşı(eşya'yı, nereden'den, nereye'ye):
+    yaz "{eşya}: {nereden} -> {nereye}"
+
+"kutu"'yu "salon"'dan "mutfak"'a taşı
+"mutfak"'a "salon"'dan "masa"'yı taşı      # aynı anlam, farklı sıra
+
+işlev böl(bölünen'i, bölen'e):
+    dön bölünen / bölen
+
+yaz 10'u 4'e böl
+yaz 4'e 10'u böl                  # yine 10 / 4
+
+# Eylem başta da yazılabilir (komut biçimi)
+yaz böl(9, 3)
+
+# Döngülerde ekler
+için i 1'den 3'e:
+    yaz "{i}. tur"
+
+her meyve meyveler'de:
+    yaz meyve'yi büyüt
+
+# Metinler de ek alır
+mesaj = "merhaba dünya"
+yaz "dünya"'yı mesaj'da bul
+yaz mesaj'ın harflerinin uzunluğu      # iyelik + ilgi zinciri

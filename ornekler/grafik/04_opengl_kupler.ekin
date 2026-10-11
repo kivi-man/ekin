@@ -1,0 +1,48 @@
+# 3B sahne: dönen küpler, küre, silindir ve OpenGL tarzı köşe çizimi
+#
+# Derlenmiş sürüm gerçek OpenGL kullanır (raylib/rlgl).
+# Yorumlayıcı aynı sahneyi yazılımsal 3B çiziciyle gösterir.
+
+kullan opengl
+
+pencere_aç 800, 600, "Ekin - OpenGL"
+kamera 7, 6, 9, 0, 1, 0
+açı = 0.0
+
+her_karede:
+    arkaplan renk(25, 28, 40)
+    sahne_başla
+    ızgara 12, 1
+
+    # dönen küp
+    gl_kaydet
+    gl_taşı 0, 1, 0
+    gl_döndür açı, 0, 1, 0
+    küp 0, 0, 0, 2, TURUNCU
+    gl_geri
+
+    # yörüngede dönen küre
+    gl_kaydet
+    gl_döndür açı * 2, 0, 1, 0
+    küre 3.5, 1, 0, 0.6, MAVİ
+    gl_geri
+
+    silindir -3, 0, -2, 0.7, 2, MOR
+
+    # OpenGL tarzı: köşe köşe renkli üçgen
+    gl_kaydet
+    gl_taşı -3, 2.5, 2
+    gl_döndür -açı, 0, 1, 0
+    gl_başla GL_ÜÇGENLER
+    gl_renk KIRMIZI
+    gl_köşe -1, 0, 0
+    gl_renk YEŞİL
+    gl_köşe 1, 0, 0
+    gl_renk SARI
+    gl_köşe 0, 1.5, 0
+    gl_bitir
+    gl_geri
+
+    sahne_bitir
+    yazı "açı: {yuvarla(açı)}°", 10, 10, 20, BEYAZ
+    açı += 1.5

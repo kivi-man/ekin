@@ -1,0 +1,61 @@
+# Yılan oyunu - ok tuşlarıyla oynanır
+
+kullan grafik
+
+HÜCRE = 20
+SÜTUN = 30
+SATIR = 24
+
+yapı Nokta:
+    x = 0
+    y = 0
+
+yılan = [Nokta(15, 12), Nokta(14, 12), Nokta(13, 12)]
+yön = Nokta(1, 0)
+yem = Nokta(5, 5)
+puan = 0
+bitti = yanlış
+sayaç = 0
+
+işlev yem_koy():
+    yem.x = rastgele(0, SÜTUN - 1)
+    yem.y = rastgele(0, SATIR - 1)
+
+işlev yılanda_mı(n):
+    her p yılan'da:
+        p == n ise: dön doğru
+    dön yanlış
+
+işlev adım_at():
+    baş = yılan[0]
+    yeni = Nokta(baş.x + yön.x, baş.y + yön.y)
+    yeni.x < 0 veya yeni.x >= SÜTUN veya yeni.y < 0 veya yeni.y >= SATIR veya yılanda_mı(yeni) ise:
+        bitti = doğru
+        dön
+    araya_ekle(yılan, 0, yeni)
+    yeni == yem ise:
+        puan += 10
+        yem_koy()
+    değilse:
+        sil(yılan, uzunluk(yılan) - 1)
+
+pencere_aç SÜTUN * HÜCRE, SATIR * HÜCRE, "Ekin Yılan"
+yem_koy()
+
+her_karede:
+    # yön değiştir (geri dönüşe izin verme)
+    tuş_basılı(TUŞ_SOL) ve yön.x == 0 ise: yön = Nokta(-1, 0)
+    tuş_basılı(TUŞ_SAĞ) ve yön.x == 0 ise: yön = Nokta(1, 0)
+    tuş_basılı(TUŞ_YUKARI) ve yön.y == 0 ise: yön = Nokta(0, -1)
+    tuş_basılı(TUŞ_AŞAĞI) ve yön.y == 0 ise: yön = Nokta(0, 1)
+
+    sayaç += 1
+    değil bitti ve sayaç % 6 == 0 ise: adım_at()
+
+    arkaplan KOYU_GRİ
+    dikdörtgen yem.x * HÜCRE, yem.y * HÜCRE, HÜCRE, HÜCRE, KIRMIZI
+    her p yılan'da:
+        dikdörtgen p.x * HÜCRE + 1, p.y * HÜCRE + 1, HÜCRE - 2, HÜCRE - 2, YEŞİL
+    yazı "Puan: {puan}", 10, 8, 22, BEYAZ
+    bitti ise:
+        yazı "OYUN BİTTİ", 190, 200, 48, SARI

@@ -1,0 +1,89 @@
+# Temel yapılar: değişken, koşul, döngü, işlev, liste, yapı
+
+# --- değişkenler (tip yazmak gerekmez, derleyici bulur)
+sayı = 10
+pi_yaklaşık = 3.14
+mesaj = "Ekin"
+hazır = doğru
+
+# --- koşullar: iki biçim de geçerli
+eğer sayı > 5:
+    yaz "sayı 5'ten büyük"
+değilse:
+    yaz "sayı küçük"
+
+sayı == 10 ise: yaz "tam on!"
+
+not_ = 72
+not_ >= 85 ise:
+    yaz "pekiyi"
+değilse not_ >= 70 ise:
+    yaz "iyi"
+değilse:
+    yaz "geçer"
+
+# --- döngüler
+için i 1'den 5'e:            # 1, 2, 3, 4, 5 (uçlar dahil)
+    yaz_satırsız i, ""
+yaz ""
+
+için i 10'dan 0'a kadar -5 adımla:  # 10, 5, 0 (geri sayım: negatif adım)
+    yaz_satırsız i, ""
+yaz ""
+
+3 kez tekrarla:
+    yaz "tekrar"
+
+sayaç = 0
+sayaç < 3 iken:
+    sayaç += 1
+yaz "sayaç:", sayaç
+
+# --- işlevler
+işlev kare(x):
+    dön x * x
+
+işlev selamla(ad, ünvan = "Sayın"):
+    dön "{ünvan} {ad}"
+
+yaz kare(7)
+yaz selamla("Ali")
+yaz selamla("Zeynep", "Dr.")
+
+işlev faktör(n):
+    n <= 1 ise: dön 1
+    dön n * faktör(n - 1)
+
+yaz "10! =", faktör(10)
+
+# --- listeler
+sayılar = [5, 3, 8, 1, 9, 2]
+yaz "liste:", sayılar
+yaz "sıralı:", sırala(sayılar)
+yaz "toplam:", topla(sayılar), "ortalama:", ortalama(sayılar)
+yaz "en büyük:", en_büyük(sayılar)
+
+çiftler = süz(sayılar, x -> x % 2 == 0)
+kareler = eşle(sayılar, x -> x * x)
+yaz "çiftler:", çiftler, "kareler:", kareler
+
+her s sayılar'da:
+    s > 7 ise: yaz "büyük öğe:", s
+
+isimler = []
+"Ahmet"'i isimler'e ekle
+"Mehmet"'i isimler'e ekle
+yaz birleştir(isimler, " ve ")
+
+# --- yapılar
+yapı Nokta:
+    x = 0.0
+    y = 0.0
+
+    işlev uzaklık(öbür):
+        dön karekök((x - öbür.x) ** 2 + (y - öbür.y) ** 2)
+
+a = Nokta(0.0, 0.0)
+b = Nokta(3.0, 4.0)
+yaz "uzaklık:", a.uzaklık(b)
+yaz b

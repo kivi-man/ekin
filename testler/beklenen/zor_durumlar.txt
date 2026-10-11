@@ -1,0 +1,56 @@
+2 -2 -4 3 3.5 1024 1.414213562
+1.5 -4 0.3333333333 2 1e+20 0.3
+3 -3 3.14 -2 2
+5 2.5 -1 10 127
+9 1 1.414213562 3628800 12 12
+doğru yanlış doğru doğru
+24
+3.5
+1
+27
+[Çok Güzel Bir Gün]
+IĞDIR İLÇESİ istanbul ışık
+6 ı kıyak
+["a", "b", "", "c"] ["bir", "iki", "üç"] x-y-z
+eli ete bek doğru doğru
+tan bul doğru yanlış
+351 ğ ababab -----
+["a", "ğ", "a", "ç"] ["a", "b", "", "c"] 2 1
+42 3.25 123.5 doğru 3
+değer: 48, liste: [1, 2], mantık: doğru
+süslü {parantez}
+[1, 1, 2, 3, 4, 5, 6, 9] [9, 6, 5, 4, 3, 2, 1, 1] [6, 2, 9, 5, 1, 4, 1, 3]
+31 24 3.875 2 1 doğru yanlış
+[4, 1, 5] 3 6 8 yanlış doğru
+[4, 5, 9, 6] [30, 10, 40, 10, 50, 90, 20, 60] doğru doğru
+[1, 2] [1, 2, 3]
+[1, 2, 3, 4, 5] [10, 7, 4, 1] [] ["x", "x", "x"] [1, 2, 3]
+3 [1, 4, 1, 5, 9, 2, 6]
+[1, 100, 4, 1, 5, 9, 2, 6]
+[100, 4, 1, 5, 9, 2, 6]
+[77, 4, 1, 5, 9, 2, 6] 81
+[] 0
+[[1, 2], [3, 4]] 3
+[2.5]
+tekler toplamı: 25
+5 4 3 2 1 
+0 0.25 0.5 0.75 1 
+n: 4
+sayaç: 6
+[0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55]
+zürafa
+selam Ece! selam Can! selam Can!
+selam Deniz! selam Deniz! selam Deniz!
+yan etki
+Vektör(x=3, y=4) 5 5
+Vektör(x=6, y=8)
+Vektör(x=7, y=9) doğru doğru
+Parçacık(konum=Vektör(x=10, y=2), ad="toz", hız=5)
+2 toz
+6 doğru doğru doğru
+[1, 2] [1, 2, 3]
+3 [1, 2]
+Vektör(x=1, y=1) Vektör(x=5, y=1)
+[Vektör(x=3, y=0), Vektör(x=0, y=0)]
+[Vektör(x=6, y=0), Vektör(x=0, y=0)]
+boş liste döngüsü atlandı

@@ -1,0 +1,23 @@
+sayı 5'ten büyük
+tam on!
+iyi
+1 2 3 4 5 
+10 5 0 
+tekrar
+tekrar
+tekrar
+sayaç: 3
+49
+Sayın Ali
+Dr. Zeynep
+10! = 3628800
+liste: [5, 3, 8, 1, 9, 2]
+sıralı: [1, 2, 3, 5, 8, 9]
+toplam: 28 ortalama: 4.666666667
+en büyük: 9
+çiftler: [8, 2] kareler: [25, 9, 64, 1, 81, 4]
+büyük öğe: 8
+büyük öğe: 9
+Ahmet ve Mehmet
+uzaklık: 5
+Nokta(x=3, y=4)

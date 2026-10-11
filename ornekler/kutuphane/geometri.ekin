@@ -1,0 +1,37 @@
+# Ekin'de yazıp C++ kütüphanesi olarak kullanmak
+#
+#   ekin kütüphane ornekler/kutuphane/geometri.ekin
+#
+# geometri.hpp üretilir. Herhangi bir C++ projesinde:
+#
+#   #include "geometri.hpp"
+#   geometri::Nokta a(0, 0), b(3, 4);
+#   double d = geometri::uzaklik(a, b);
+#
+# Türkçe adlar C++'ta ASCII'ye çevrilir: uzaklık -> uzaklik, çevre -> cevre
+
+yapı Nokta:
+    x: ondalık = 0
+    y: ondalık = 0
+
+işlev uzaklık(a: Nokta, b: Nokta) -> ondalık:
+    dön karekök((a.x - b.x) ** 2 + (a.y - b.y) ** 2)
+
+işlev çevre(noktalar: liste[Nokta]) -> ondalık:
+    toplam = 0.0
+    için i 0'dan uzunluk(noktalar) - 1'e:
+        sonraki = (i + 1) % uzunluk(noktalar)
+        toplam += uzaklık(noktalar[i], noktalar[sonraki])
+    dön toplam
+
+işlev alan(noktalar: liste[Nokta]) -> ondalık:
+    # ayakkabı bağı (shoelace) formülü
+    t = 0.0
+    n = uzunluk(noktalar)
+    için i 0'dan n - 1'e:
+        j = (i + 1) % n
+        t += noktalar[i].x * noktalar[j].y - noktalar[j].x * noktalar[i].y
+    dön mutlak(t) / 2
+
+işlev açıkla(noktalar: liste[Nokta]) -> metin:
+    dön "{uzunluk(noktalar)} köşeli şekil: çevre {çevre(noktalar)}, alan {alan(noktalar)}"

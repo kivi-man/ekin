@@ -1,0 +1,73 @@
+# opengl modülünün bütün komutları tek sahnede
+#
+#   ekin çalıştır ornekler/grafik/05_opengl_ozellikleri.ekin
+#   ekin derle    ornekler/grafik/05_opengl_ozellikleri.ekin --çalıştır
+
+kullan opengl
+
+pencere_aç 800, 600, "Ekin - OpenGL özellikleri"
+kamera 0, 7, 12, 0, 1, -1
+görüş_açısı 50
+açı = 30.0
+
+her_karede:
+    arkaplan renk(20, 22, 32)
+    sahne_başla
+    düzlem 0, -0.02, 0, 16, 12, KOYU_YEŞİL
+    ızgara 16, 1
+
+    # ön sıra: hazır şekiller
+    küp -5, 0.8, 1, 1.6, TURUNCU
+    kutu -2.5, 0.75, 1, 1, 1.5, 2, KIRMIZI
+    küre 0, 1, 1, 0.9, MAVİ
+    silindir 2.5, 0, 1, 0.7, 2, MOR
+    küp_çerçeve 5, 0.8, 1, 1.6, SARI
+    çizgi3 -6, 0.05, 3, 6, 0.05, 3, BEYAZ
+
+    # dönüşümler: kaydet / taşı / döndür / ölçekle / geri
+    gl_kaydet
+    gl_taşı -4.5, 1.5, -3
+    gl_döndür açı, 0, 1, 0
+    gl_ölçekle 1, 3, 1
+    küp 0, 0, 0, 1, TURKUAZ
+    gl_geri
+
+    # köşe köşe üçgen: köşe renkleri birbirine karışır
+    gl_kaydet
+    gl_taşı -1.5, 0.3, -3
+    gl_döndür açı, 0, 1, 0
+    gl_başla GL_ÜÇGENLER
+    gl_renk KIRMIZI
+    gl_köşe -1.3, 0, 0
+    gl_renk YEŞİL
+    gl_köşe 1.3, 0, 0
+    gl_renk MAVİ
+    gl_köşe 0, 2.4, 0
+    gl_bitir
+    gl_geri
+
+    # dörtgen
+    gl_başla GL_DÖRTGENLER
+    gl_renk PEMBE
+    gl_köşe 1, 0.3, -3
+    gl_köşe 2.6, 0.3, -3
+    gl_köşe 2.6, 2.3, -3
+    gl_köşe 1, 2.3, -3
+    gl_bitir
+
+    # çizgilerle yıldız
+    gl_kaydet
+    gl_taşı 4.8, 1.5, -3
+    gl_döndür açı, 0, 0, 1
+    gl_başla GL_ÇİZGİLER
+    gl_renk ALTIN
+    için i 0'dan 11'e:
+        a = radyan(i * 30)
+        gl_köşe 0, 0, 0
+        gl_köşe cos(a) * 1.2, sin(a) * 1.2, 0
+    gl_bitir
+    gl_geri
+
+    sahne_bitir
+    yazı "Ekin + OpenGL — kare {kare_sayısı()}, açı {yuvarla(açı)}°", 10, 10, 20, BEYAZ
+    açı += 2

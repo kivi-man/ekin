@@ -1,0 +1,10 @@
+# Başka dosyalardan 'kullan "araclar.ekin"' ile alınan yardımcı işlevler
+
+işlev selamla(ad'ı):
+    dön "Merhaba {ad}!"
+
+işlev ortanca(sayılar'ın):
+    s = sırala(sayılar)
+    n = uzunluk(s)
+    n % 2 == 1 ise: dön ondalık(s[n // 2])
+    dön (s[n // 2 - 1] + s[n // 2]) / 2

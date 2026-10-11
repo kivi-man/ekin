@@ -1,0 +1,23 @@
+# Servo motoru 0-180 derece arasında süpürür, uçlarda bip sesi çıkarır.
+# Servo 9. pinde, hoparlör (buzzer) 8. pinde.
+
+kullan arduino
+
+SERVO = 9
+HOPARLÖR = 8
+
+işlev bip(frekans):
+    ton(HOPARLÖR, frekans, 100)
+
+kurulum:
+    SERVO'ya servo_bağla
+
+döngü:
+    için açı 0'dan 180'e 5 adımla:
+        açı'yı SERVO'ya servo_yaz
+        15 bekle
+    bip(880)
+    için açı 180'den 0'a -5 adımla:
+        açı'yı SERVO'ya servo_yaz
+        15 bekle
+    bip(440)

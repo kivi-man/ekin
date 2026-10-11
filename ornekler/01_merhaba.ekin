@@ -1,0 +1,20 @@
+# Ekin'e hoş geldiniz!
+# Çalıştırmak için:  ekin çalıştır ornekler/01_merhaba.ekin
+# Derlemek için:     ekin derle ornekler/01_merhaba.ekin --çalıştır
+
+yaz "Merhaba, dünya!"
+
+ad = "Ayşe"
+yaş = 30
+yaz "{ad} {yaş} yaşında."
+
+# Eylem sonda da yazılabilir (Türkçe cümle gibi):
+"Ekin ile programlama çok kolay"'ı yaz
+
+# Türkçe büyük/küçük harf kuralları:
+şehir = "istanbul"
+yaz şehir'i büyüt          # İSTANBUL  (i -> İ)
+yaz "IŞIK"'ı küçült        # ışık      (I -> ı)
+
+# Ekli sözcükler: "şehrin uzunluğu" gibi
+yaz "Harf sayısı:", şehir'in uzunluğu
